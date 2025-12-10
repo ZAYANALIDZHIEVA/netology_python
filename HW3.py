@@ -20,13 +20,14 @@ queries = [
 "курс по питону",
 "cериалы про спорт",
 ]
-two_words = len([q for q in queries if len(q.split()) == 2])
-three_words = len([q for q in queries if len(q.split()) ==3])
-total_queries = len(queries)
-two_words_percent = two_words/total_queries*100
-three_words_percent = three_words/total_queries*100
-print(f"Поисковых запросов, содержащих 2 слова:{two_words_percent:.2f}%")
-print(f"Поисковых запросов, содержащих 3 слова:{three_words_percent:.2f}%")   
+word_length = {}
+for query in queries:
+    word_count = len(query.split())
+    if word_count not in word_length:
+        word_length[word_count] =1
+    else: word_length[word_count] += 1
+for key, value in word_length.items():
+    print(f"Поисковых запросов, содержащих {key} {value}")
 
 #Task3
 results = {
